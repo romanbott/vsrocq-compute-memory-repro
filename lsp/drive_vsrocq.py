@@ -25,16 +25,21 @@ import threading
 import time
 from pathlib import Path
 
+# Must match Protocol.Settings.t in the server. All required fields present so
+# the server actually parses (and applies) the configuration.
 SETTINGS = {
-    "proof": {"delegate": "None", "workers": 0, "mode": 0},  # 0 = Manual
-    "goals": {"diff": {"mode": "off"}, "messages": {"full": True}},
-    "completion": {
-        "enable": False,
-        "algorithm": 0,
-        "unificationLimit": 100.0,
-        "sizeFactor": 1.0,
+    "proof": {
+        "delegation": "None",
+        "workers": None,
+        "mode": 0,  # 0 = Manual
+        "block": True,
+        "pointInterpretationMode": 0,
     },
+    "goals": {"messages": {"full": True}},
+    "completion": {"enable": False, "algorithm": 0, "unificationLimit": 100},
     "diagnostics": {"enable": True, "full": True},
+    "memory": {"limit": 4},  # gigabytes
+    "interrupt": {"preempt": False},
 }
 
 
@@ -68,9 +73,9 @@ class RssSampler(threading.Thread):
             children.setdefault(ppid, []).append(int(entry))
         return children
 
-    def _tree_rss(self) -> int:
+    def _tree_rss(self) -> dict:
         children = self._ppid_map()
-        total = 0
+        rss: dict[int, int] = {}
         stack = [self.pid]
         seen = set()
         while stack:
@@ -82,25 +87,28 @@ class RssSampler(threading.Thread):
                 with open(f"/proc/{pid}/status") as fh:
                     for line in fh:
                         if line.startswith("VmRSS:"):
-                            total += int(line.split()[1])
+                            rss[pid] = int(line.split()[1])
                             break
             except OSError:
                 pass
             stack.extend(children.get(pid, []))
-        return total
+        return rss
 
     def run(self):
         start = time.monotonic()
         with open(self.out_csv, "w") as out:
-            out.write("t_ms,rss_kb\n")
+            out.write("t_ms,rss_kb,nprocs,max_proc_kb\n")
             while not self.stop.is_set():
                 try:
                     os.kill(self.pid, 0)
                 except OSError:
                     break
-                rss = self._tree_rss()
-                self.peak_kb = max(self.peak_kb, rss)
-                out.write(f"{int((time.monotonic() - start) * 1000)},{rss}\n")
+                tree = self._tree_rss()
+                total = sum(tree.values())
+                nprocs = len(tree)
+                max_proc = max(tree.values()) if tree else 0
+                self.peak_kb = max(self.peak_kb, total)
+                out.write(f"{int((time.monotonic() - start) * 1000)},{total},{nprocs},{max_proc}\n")
                 out.flush()
                 self.stop.wait(self.interval)
 
@@ -158,7 +166,16 @@ def main() -> int:
     ap.add_argument("--server", default=os.environ.get("VSROCQTOP", "vsrocqtop"))
     ap.add_argument("--debug", action="store_true", help="pass -vsrocq-d all -bt")
     ap.add_argument("--label", default=None)
+    ap.add_argument(
+        "--memory-limit",
+        type=int,
+        default=None,
+        help="value (in GB) for the server's vsrocq.memory.limit setting",
+    )
     args = ap.parse_args()
+
+    if args.memory_limit is not None:
+        SETTINGS["memory"]["limit"] = args.memory_limit
 
     src = Path(args.file).resolve()
     text = src.read_text()
@@ -235,7 +252,10 @@ def main() -> int:
             }
         },
     )
-    # Ask the server to interpret the whole document.
+    # Parsing is triggered by didOpen and can restart, cancelling an
+    # interpretToEnd sent too early.  Let it settle, then ask once (re-sending
+    # would re-run the whole document).
+    time.sleep(2.0)
     client.notify(
         "prover/interpretToEnd",
         {"textDocument": {"uri": uri, "version": 1}},

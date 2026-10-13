@@ -1,0 +1,270 @@
+From 2b42d72f8be71bc88b7abb9f51675006972b6ea4 Mon Sep 17 00:00:00 2001
+From: VsRocq contributor <noreply@example.com>
+Date: Tue, 13 Oct 2026 17:30:46 -0600
+Subject: [PATCH] language-server: enforce vsrocq.memory.limit on running
+ computations
+
+`vsrocq.memory.limit` only triggered a `Gc.compact`/purge of closed
+documents; it never bounded an in-flight computation, and the
+`memprof-limits` dependency was wired for cancellation only. A single
+`Compute` producing a large value could therefore grow `vsrocqtop`
+without bound until the host ran out of memory.
+
+- proverThread: run every job under `Memprof_limits.limit_global_memory`
+  (nested with the existing cancellation token), set the global limit
+  from the configuration, and report a memory abort as `Aborted` after
+  compacting the heap.
+- checkingManager/lspManager: plumb `vsrocq.memory.limit` (GB -> kiB)
+  through to proverThread.
+- executionManager: turn `Aborted` into a sentence error instead of
+  raising in the event loop, which used to kill the server.
+- tests/docs: add a regression test and correct the setting's description.
+---
+ client/package.json                         |  2 +-
+ docs/FAQ.md                                 |  2 +-
+ language-server/dm/checkingManager.ml       |  4 ++-
+ language-server/dm/checkingManager.mli      |  1 +
+ language-server/dm/executionManager.ml      |  9 ++++-
+ language-server/dm/proverThread.ml          | 30 +++++++++++++---
+ language-server/dm/proverThread.mli         |  7 ++--
+ language-server/tests/common.ml             |  1 +
+ language-server/tests/proverThread_tests.ml | 38 +++++++++++++++++++++
+ language-server/vsrocqtop/lspManager.ml     |  7 ++++
+ 10 files changed, 90 insertions(+), 11 deletions(-)
+ create mode 100644 language-server/tests/proverThread_tests.ml
+
+diff --git a/client/package.json b/client/package.json
+index f922da5..f404e9b 100644
+--- a/client/package.json
++++ b/client/package.json
+@@ -141,7 +141,7 @@
+             "scope": "workspace",
+             "type": "number",
+             "default": 4,
+-            "description": "Sets the memory limit over which we discard the execution state of documents which have been saved (in Gb). "
++            "description": "Sets the memory limit (in Gb) for the Rocq server. Once the server's heap exceeds it, execution states of non-visible documents are discarded and any running computation that exceeds the limit is interrupted and reported as an error. "
+           },
+           "vsrocq.interrupt.preempt": {
+             "scope": "workspace",
+diff --git a/docs/FAQ.md b/docs/FAQ.md
+index c6409f8..81e9856 100644
+--- a/docs/FAQ.md
++++ b/docs/FAQ.md
+@@ -132,7 +132,7 @@ Welcome to the VsRocq FAQ! This document aims to answer common questions and hel
+ 
+     This is a common frustration and can have several causes:
+ 
+-    - **Memory Usage:** `vsrocqtop` can be memory-intensive, especially with large files or libraries like MetaCoq. Try increasing the memory limit for your VS Code/system if possible, or close other demanding applications. VsRocq has a setting `"vsrocq.memory.limit"` (default 4GB) that attempts to free memory by discarding states of closed documents when the limit is hit, but this might not always prevent high usage during active processing.
++    - **Memory Usage:** `vsrocqtop` can be memory-intensive, especially with large files or libraries like MetaCoq. VsRocq has a setting `"vsrocq.memory.limit"` (default 4GB): once the server's heap exceeds it, execution states of non-visible documents are discarded and any running computation exceeding the limit is interrupted and reported as an error (for example a `Compute` that produces a huge value). Lower the limit to be safer, or raise it for legitimately heavy developments.
+     - **Diagnosing Crashes:**
+       - Check the **"Rocq Language Server" output channel** in VS Code for error messages and backtraces.
+       - For more detail, add `"-vsrocq-d", "all"` and `"-bt"` to `"vsrocq.args"` in your `settings.json`.
+diff --git a/language-server/dm/checkingManager.ml b/language-server/dm/checkingManager.ml
+index 21cd307..2dc3745 100644
+--- a/language-server/dm/checkingManager.ml
++++ b/language-server/dm/checkingManager.ml
+@@ -27,6 +27,7 @@ type settings = {
+   pp_mode : Protocol.Settings.Goals.PrettyPrint.t;
+   point_interp_mode:Protocol.Settings.PointInterpretationMode.t;
+   preempt : bool;
++  memory_limit : int;
+ }
+ 
+ let settings : settings ref = ref {
+@@ -36,11 +37,12 @@ let settings : settings ref = ref {
+   point_interp_mode = Settings.PointInterpretationMode.Cursor;
+   block_on_first_error = true;
+   preempt = false;
++  memory_limit = -1;
+ }
+ 
+ let set_options s =
+   settings := s;
+-  ProverThread.set_options ~preempt:s.preempt
++  ProverThread.set_options ~preempt:s.preempt ~memory_limit:s.memory_limit
+ 
+ let (Log log) = Log.mk_log "checkingManager"
+ 
+diff --git a/language-server/dm/checkingManager.mli b/language-server/dm/checkingManager.mli
+index 668a453..d7c238c 100644
+--- a/language-server/dm/checkingManager.mli
++++ b/language-server/dm/checkingManager.mli
+@@ -23,6 +23,7 @@ type settings = {
+   pp_mode : Protocol.Settings.Goals.PrettyPrint.t;
+   point_interp_mode:Protocol.Settings.PointInterpretationMode.t;
+   preempt : bool;
++  memory_limit : int;
+ }
+ 
+ val set_options : settings -> unit
+diff --git a/language-server/dm/executionManager.ml b/language-server/dm/executionManager.ml
+index 5612124..c03a100 100644
+--- a/language-server/dm/executionManager.ml
++++ b/language-server/dm/executionManager.ml
+@@ -422,7 +422,14 @@ let promise_execution ~doc_id ~state_id ~st ~error_recovery ast =
+           let updates = [state_id, v] in
+           let exec_error = exec_error_of_execution_status state_id v in
+           { updates; vs; events = []; exec_error }
+-      | Aborted e -> CErrors.user_err e (* bug in vsrocq *)
++      | Aborted e ->
++          (* Surface the abort (timeout, out-of-memory, internal error) as a
++             sentence error instead of raising in the event loop, which used
++             to kill the server. *)
++          let v = error_no_resiliency None None e in
++          let updates = [state_id, v] in
++          let exec_error = exec_error_of_execution_status state_id v in
++          { updates; vs = st; events = []; exec_error }
+       | Interrupted ->
+           let v = error_no_resiliency None None Pp.(str "Interrupted by the user") in
+           let updates = [state_id, v] in
+diff --git a/language-server/dm/proverThread.ml b/language-server/dm/proverThread.ml
+index 56e5b5f..fb65eec 100644
+--- a/language-server/dm/proverThread.ml
++++ b/language-server/dm/proverThread.ml
+@@ -17,7 +17,10 @@
+ open Types
+ 
+ let preempt = ref false
+-let set_options ~preempt:x = preempt := x
++
++let set_options ~preempt:x ~memory_limit =
++  preempt := x;
++  Memprof_limits.set_global_memory_limit memory_limit
+ 
+ let (Log log) = Log.mk_log "proverThread"
+ 
+@@ -110,11 +113,28 @@ let interrupt ~doc_id =
+   Queue.iter (interrupt_job_if ~doc_id) jobs.queue;
+   Mutex.unlock jobs_mutex
+ 
++let out_of_memory =
++  Pp.str
++    "Rocq exceeded the configured memory limit (vsrocq.memory.limit); \
++     the computation was aborted"
++
+ let limit f token =
+-  match Terminated (Memprof_limits.limit_with_token ~token f) with
+-  | Aborted _ | Interrupted -> assert false
+-  | Terminated (Error _) -> Interrupted
+-  | Terminated (Ok x) -> Terminated x
++  (* Each job runs under two nested limits: the global memory limit (which
++     registers this thread and interrupts it once the major heap grows past
++     the configured limit) and the cancellation token.  A memory abort
++     surfaces as [Error] from the outer wrapper; a cancellation surfaces as
++     [Ok (Error _)] from the inner one. *)
++  match
++    Memprof_limits.limit_global_memory (fun () ->
++        Memprof_limits.limit_with_token ~token f)
++  with
++  | Ok (Ok x) -> Terminated x
++  | Ok (Error _) -> Interrupted
++  | Error _ ->
++      (* Free the runaway term and shrink the major heap; otherwise every
++         subsequent job would be interrupted immediately. *)
++      Gc.compact ();
++      Aborted out_of_memory
+   | exception e ->
+       let e, info = Exninfo.capture e in
+       Aborted (CErrors.iprint (e, info))
+diff --git a/language-server/dm/proverThread.mli b/language-server/dm/proverThread.mli
+index b472a8c..30a649f 100644
+--- a/language-server/dm/proverThread.mli
++++ b/language-server/dm/proverThread.mli
+@@ -13,8 +13,11 @@
+ (**************************************************************************)
+ 
+ (** if [~preempt] is [false] the [run] and [try_run] APIs enqueue the job rather
+-    than forcibly interrupting any running job *)
+-val set_options : preempt:bool -> unit
++    than forcibly interrupting any running job.
++
++    [~memory_limit] is a global memory limit in kiB (a negative value disables
++    it); jobs exceeding it are interrupted and reported as aborted. *)
++val set_options : preempt:bool -> memory_limit:int -> unit
+ 
+ (**
+ 
+diff --git a/language-server/tests/common.ml b/language-server/tests/common.ml
+index 7083cb0..26ad583 100644
+--- a/language-server/tests/common.ml
++++ b/language-server/tests/common.ml
+@@ -152,6 +152,7 @@ let () = CheckingManager.(set_options {
+   pp_mode = Protocol.Settings.Goals.PrettyPrint.Pp;
+   point_interp_mode = Protocol.Settings.PointInterpretationMode.Cursor;
+   preempt = true;
++  memory_limit = -1;
+ })
+ 
+ let rec handle_dm_events n (events : DocumentManager.event Sel.Todo.t) st =
+diff --git a/language-server/tests/proverThread_tests.ml b/language-server/tests/proverThread_tests.ml
+new file mode 100644
+index 0000000..daa47f6
+--- /dev/null
++++ b/language-server/tests/proverThread_tests.ml
+@@ -0,0 +1,38 @@
++(**************************************************************************)
++(*                                                                        *)
++(*                                 VSRocq                                 *)
++(*                                                                        *)
++(*                   Copyright INRIA and contributors                     *)
++(*       (see version control and README file for authors & dates)        *)
++(*                                                                        *)
++(**************************************************************************)
++(*                                                                        *)
++(*   This file is distributed under the terms of the MIT License.         *)
++(*   See LICENSE file.                                                    *)
++(*                                                                        *)
++(**************************************************************************)
++
++open Dm
++
++(* Regression test: a job that allocates past [memory_limit] must be aborted
++   with an error rather than growing without bound (see vsrocq.memory.limit).
++   The limit is expressed in kiB by [ProverThread.set_options]. *)
++
++let baseline_kib () =
++  let { Gc.heap_words; _ } = Gc.stat () in
++  Sys.word_size * heap_words / 1024
++
++let%test_unit "proverThread: memory limit aborts a job" =
++  let margin_kib = 100 * 1024 (* 100 MiB *) in
++  ProverThread.set_options ~preempt:false ~memory_limit:(baseline_kib () + margin_kib);
++  let outcome =
++    ProverThread.run ~doc_id:0 ~name:"memory-limit-test" (fun () ->
++        (* ~200 MiB on 64-bit, comfortably above the margin. *)
++        let big = Array.make 25_000_000 0 in
++        Array.length big)
++  in
++  (* Restore the default (disabled) limit so other tests are unaffected. *)
++  ProverThread.set_options ~preempt:false ~memory_limit:(-1);
++  match outcome with
++  | Ok _ -> failwith "expected the job to be aborted by the memory limit"
++  | Error _ -> ()
+diff --git a/language-server/vsrocqtop/lspManager.ml b/language-server/vsrocqtop/lspManager.ml
+index ffc02dc..3246e3e 100644
+--- a/language-server/vsrocqtop/lspManager.ml
++++ b/language-server/vsrocqtop/lspManager.ml
+@@ -131,6 +131,12 @@ let do_configuration settings =
+   full_diagnostics := settings.diagnostics.full;
+   full_messages := settings.goals.messages.full;
+   max_memory_usage := settings.memory.limit * 1000000000;
++  (* [Memory.limit] is expressed in GB; Memprof_limits expects kiB.  A
++     non-positive value disables the limit. *)
++  let memory_limit_kib =
++    if settings.memory.limit <= 0 then -1
++    else settings.memory.limit * 1000000000 / 1024
++  in
+   Dm.CheckingManager.set_options {
+     Dm.CheckingManager.check_mode = settings.proof.mode;
+     block_on_first_error = settings.proof.block;
+@@ -138,6 +144,7 @@ let do_configuration settings =
+     pp_mode = Option.default Settings.Goals.PrettyPrint.Pp settings.goals.ppmode;
+     diff_mode = Settings.Goals.Diff.Mode.Off;
+     preempt = settings.interrupt.preempt;
++    memory_limit = memory_limit_kib;
+     (* Diff mode is broken, cfr #1163 #1164 *)
+     (* diff_mode := settings.goals.diff.mode; *)
+   }
+-- 
+2.56.0
+

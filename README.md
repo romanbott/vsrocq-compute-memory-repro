@@ -56,9 +56,12 @@ fix mul (n m : nat) {struct n} : nat :=
   match n with 0 => 0 | S p => m + mul p m end
 ```
 
-`Compute` uses call-by-value, so reducing (and then printing the resulting
-`S (S (...))` chain) recurses to a depth proportional to the *result*, roughly
-`n*m`. `harness/sweep_nat.sh` finds the cliff:
+`Compute` is in fact `Eval vm_compute` (see Rocq #17406), so the reduction goes
+through the VM and then **reads the result back** into a kernel term; that
+read-back recurses on the OCaml system stack, to a depth proportional to the
+*result* (roughly `n*m`). Note that `Eval cbv`, `Eval compute` and `Eval simpl`
+all print `= 40000` for the same term — only `vm_compute` (and
+`native_compute`) overflow. `harness/sweep_nat.sh` finds the cliff:
 
 | n | `Compute (mult n n)` | wall | peak RSS |
 |---|---|---|---|
@@ -140,16 +143,44 @@ So a single `Compute` in a document makes `vsrocqtop` allocate until the machine
 swaps/dies. In an editor this is what "the whole system hangs at tens of GB"
 looks like.
 
+## Fix
+
+`patches/vsrocq-memory-limit.patch` (against upstream `main`) makes the setting
+do what its name says: it feeds `vsrocq.memory.limit` into
+`Memprof_limits.set_global_memory_limit` and runs every job under
+`Memprof_limits.limit_global_memory`, nested with the existing cancellation
+token. A memory abort is surfaced as a sentence error and the heap is compacted
+afterwards. It also fixes an unrelated crash: `executionManager.ml` used to do
+`Aborted e -> CErrors.user_err e`, which raised inside the event loop and killed
+the server.
+
+Validated against the patched server (`vsrocq.memory.limit = 1` GB, same repro):
+
+| | unpatched | patched |
+|---|---|---|
+| behaviour | grows without bound | aborts at the limit |
+| peak RSS | 6.4 GB+ (10 s), still climbing | 3.2 GB peak, settles to 2.2 GB |
+| server | OOMs the host / is killed | survives and reports an error |
+| diagnostic | — | `Rocq exceeded the configured memory limit ...` |
+
+**Caveat.** The limit is on the OCaml **major heap** (what memprof-limits
+measures). `Compute`/`vm_compute` also allocates outside it — the VM read-back
+uses a large non-heap stack — so RSS can exceed the limit by a factor (~2.6x
+for this repro). The bound is therefore approximate; keep the limit
+conservative.
+
 ## Root cause
 
 * `nat` is unary, so any computation producing a large `nat` is
   `O(value)` in time **and** memory.
-* `Compute` is `cbv`; its recursive reduction (and the pretty-printer for the
-  resulting `S`-chain) also has `O(value)` call depth — hence the stack
-  overflow at surprisingly small numbers (`mult 200 200`).
+* `Compute` = `Eval vm_compute`; the VM's recursive **read-back** of the result
+  has `O(value)` call depth on OCaml 4 — hence the stack overflow at
+  surprisingly small numbers (`mult 200 200`). This is known upstream (#17473,
+  #10073) and becomes moot on OCaml 5.
 * `vsrocqtop` runs that computation in-process and provides no effective
-  per-command memory ceiling or cancellation (the documented
-  `vsrocq.memory.limit` only discards states of *closed* documents).
+  per-command memory ceiling: `vsrocq.memory.limit` only compacts the heap and
+  discards states of *closed* documents, while the `memprof-limits` dependency
+  is wired for cancellation only (`proverThread.ml`), never for a memory bound.
 
 ## Workarounds
 
@@ -170,6 +201,7 @@ harness/  memory-capped runner, RSS sampler, sweeps
 lsp/      headless vsrocqtop driver
 results/  captured measurements (CSV/logs)
 issues/   draft upstream reports
+patches/  proposed vsrocq fix
 ```
 
 ## Safety
@@ -180,6 +212,12 @@ can exhaust the host.
 
 ## References
 
+* Rocq `#17473` — "Misleading stack overflow messages from Compute for largish
+  numbers" (open).
+* Rocq `#10073` — "wish: an option for normalizing very large terms without
+  causing a stack overflow" (closed; moot on OCaml 5).
+* Rocq `#17406` — "Explain stack overflow for nat, number examples" (closed);
+  notes that `Compute` is `Eval vm_compute`.
 * Rocq `#5661` — "printing small expressions should not take massively more
   memory than computing them".
 * VsRocq `#1142` — possible memory leak in `vsrocqtop`.
