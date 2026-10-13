@@ -1,0 +1,8 @@
+label=nat_100
+file=results/gen/mult_100.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=285
+exit_code=0
+peak_rss_kb=241876
+verdict=

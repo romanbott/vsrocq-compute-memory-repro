@@ -1,0 +1,8 @@
+label=nat_140
+file=results/gen/mult_140.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=399
+exit_code=0
+peak_rss_kb=231908
+verdict=

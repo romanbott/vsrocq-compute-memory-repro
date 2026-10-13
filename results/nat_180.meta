@@ -1,0 +1,8 @@
+label=nat_180
+file=results/gen/mult_180.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=558
+exit_code=0
+peak_rss_kb=336564
+verdict=

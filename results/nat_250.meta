@@ -1,0 +1,8 @@
+label=nat_250
+file=results/gen/mult_250.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=160
+exit_code=0
+peak_rss_kb=8748
+verdict=Error: Stack overflow

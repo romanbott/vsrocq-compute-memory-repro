@@ -1,0 +1,34 @@
+## Environment
+
+```
+$ rocq --version
+The Rocq Prover, version 9.1.0
+compiled with OCaml 4.14.2
+
+$ opam list (relevant)
+rocq-core               9.1.0       pinned to version 9.1.0
+rocq-elpi               3.3.1       Elpi extension language for Coq
+rocq-hierarchy-builder  1.10.2      High level commands to declare and evolve a hierarchy based on packed classes
+rocq-mathcomp-algebra   2.5.0       Mathematical Components Library on Algebra
+rocq-mathcomp-boot      2.5.0       Small Scale Reflection
+rocq-mathcomp-field     2.5.0       Mathematical Components Library on Fields
+rocq-mathcomp-fingroup  2.5.0       Mathematical Components Library on finite groups
+rocq-mathcomp-finmap    2.2.2       Finite sets, finite maps, finitely supported functions
+rocq-mathcomp-order     2.5.0       Mathematical Components Library on order theory
+rocq-mathcomp-solvable  2.5.0       Mathematical Components Library on finite groups (II)
+rocq-mathcomp-ssreflect 2.5.0       Compatibility package for rocq-mathcomp-boot and rocq-mathcomp-order
+rocq-runtime            9.1.0       The Rocq Prover -- Core Binaries and Tools
+rocq-stdlib             9.1.0       The Rocq Proof Assistant -- Standard Library
+vsrocq-language-server  2.3.4       VSRocq language server
+
+$ uname -a
+Linux zenbook 7.2.9-201.fc44.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Oct  9 15:04:46 UTC 2026 x86_64 GNU/Linux
+
+$ nproc
+22
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:            30Gi       9.3Gi        12Gi       2.4Gi        10Gi        21Gi
+Swap:          8.0Gi        21Mi       8.0Gi
+```

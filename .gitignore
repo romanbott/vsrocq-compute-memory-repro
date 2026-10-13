@@ -1,0 +1,5 @@
+results/gen/
+__pycache__/
+*.pyc
+core
+core.*

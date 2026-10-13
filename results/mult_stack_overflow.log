@@ -1,0 +1,12 @@
+Welcome to Rocq 9.1.0
+Skipping rcfile loading.
+
+Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq < Rocq <      = 22500
+     : nat
+
+Rocq < Toplevel input, characters 0-23:
+> Compute (mult 200 200).
+> ^^^^^^^^^^^^^^^^^^^^^^^
+Error: Stack overflow.
+
+Rocq < 

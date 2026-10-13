@@ -1,0 +1,8 @@
+label=mult_stack_overflow
+file=rocq/mult_stack_overflow.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=460
+exit_code=0
+peak_rss_kb=235848
+verdict=Error: Stack overflow

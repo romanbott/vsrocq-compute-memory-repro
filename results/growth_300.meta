@@ -1,0 +1,8 @@
+label=growth_300
+file=results/gen/ecml_1_20_300.v
+mem_cap_mb=8000
+timeout_s=6
+wall_ms=6199
+exit_code=143
+peak_rss_kb=2657236
+verdict=

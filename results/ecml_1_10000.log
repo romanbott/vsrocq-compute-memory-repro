@@ -1,0 +1,16 @@
+Welcome to Rocq 9.1.0
+Skipping rcfile loading.
+
+Rocq < 
+Rocq < 
+Rocq < Rocq < fold is defined
+fold is recursively defined (guarded on 4th argument)
+
+Rocq < ecml is defined
+
+Rocq < Toplevel input, characters 0-25:
+> Compute (ecml [1;10000]).
+> ^^^^^^^^^^^^^^^^^^^^^^^^^
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Fatal error: out of memory

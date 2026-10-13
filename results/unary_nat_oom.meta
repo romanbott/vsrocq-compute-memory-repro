@@ -1,0 +1,8 @@
+label=unary_nat_oom
+file=rocq/unary_nat_oom.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=3056
+exit_code=0
+peak_rss_kb=1176568
+verdict=Error: Out of memory
