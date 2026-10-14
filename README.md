@@ -159,32 +159,21 @@ So a single `Compute` in a document makes `vsrocqtop` allocate until the machine
 swaps/dies. In an editor this is what "the whole system hangs at tens of GB"
 looks like.
 
-## Fix
+## Status
 
-`patches/vsrocq-memory-limit.patch` (against upstream `main`) makes the setting
-do what its name says: it feeds `vsrocq.memory.limit` into
-`Memprof_limits.set_global_memory_limit` and runs every job under
-`Memprof_limits.limit_global_memory`, nested with the existing cancellation
-token. A memory abort is surfaced as a sentence error and the heap is compacted
-afterwards. It also fixes an unrelated crash: `executionManager.ml` used to do
-`Aborted e -> CErrors.user_err e`, which raised inside the event loop and killed
-the server.
+* VsRocq issue: <ISSUE-URL>.
+* Fix proposed upstream: <PR-URL> — it feeds `vsrocq.memory.limit` into
+  `Memprof_limits.set_global_memory_limit` and runs every job under
+  `Memprof_limits.limit_global_memory`, nested with the existing cancellation
+  token, surfacing a memory abort as a sentence error. It also fixes a related
+  crash: `executionManager.ml` used to do `Aborted e -> CErrors.user_err e`,
+  which raised inside the event loop and killed the server.
 
-Validated against the patched server (`vsrocq.memory.limit = 1` GB,
-`rocq/factorial_oom.v`):
-
-| | unpatched (2.3.4) | patched (main) |
-|---|---|---|
-| behaviour | grows without bound | aborts at the limit |
-| peak RSS | 3.65 GB at 13 s, still climbing | 3.23 GB peak, settles to 2.18 GB |
-| server | OOMs the host / is killed | survives and reports an error |
-| diagnostic | — | `Rocq exceeded the configured memory limit ...` |
-
-**Caveat.** The limit is on the OCaml **major heap** (what memprof-limits
-measures). `Compute`/`vm_compute` also allocates outside it — the VM read-back
-uses a large non-heap stack — so RSS can exceed the limit by a factor (~2.6x
-for this repro). The bound is therefore approximate; keep the limit
-conservative.
+With `vsrocq.memory.limit = 1` GB the patched server aborts at the limit (peak
+RSS 3.2 GB, settling to 2.2 GB) instead of growing without bound. **Caveat:** the
+limit is on the OCaml **major heap** (what memprof-limits measures);
+`Compute`/`vm_compute` also allocates outside it (the VM read-back uses a large
+non-heap stack), so RSS can exceed the limit by a factor (~2.6x for this repro).
 
 ## Root cause
 
@@ -217,8 +206,6 @@ rocq/     minimal .v reproducers (no personal data)
 harness/  memory-capped runner, RSS sampler, sweeps
 lsp/      headless vsrocqtop driver
 results/  captured measurements (CSV/logs)
-issues/   draft upstream reports
-patches/  proposed vsrocq fix
 ```
 
 ## Safety
