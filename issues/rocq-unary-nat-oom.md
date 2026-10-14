@@ -1,20 +1,19 @@
-# Rocq: `Compute` of a standard recursive function with a large unary `nat` result consumes unbounded memory
+<!-- Title: Compute of a standard recursive function with a large unary nat result consumes unbounded memory -->
 
-**Component:** Rocq kernel / reduction (`Compute` = `Eval vm_compute`)
-**Version:** Rocq 9.1.0, OCaml 4.14.2, x86_64 Linux
-
-## Summary
+**Description of the problem**
 
 A short, ordinary `Compute` allocates without bound because its result is a
 large unary `nat`. Under a 2 GB cap it dies within seconds; uncapped it grows
 into the tens of GB and can take the machine down (especially through an IDE's
-language server).
+language server). Small values are instant, so this is surprising.
 
-## Reproducer
+Minimal reproduction repo (capped harness, measurements):
+<REPO-URL>
 
-`rocq/factorial_oom.v`:
+**Small Rocq / Coq file to reproduce the bug**
 
 ```coq
+(* rocq/factorial_oom.v *)
 Fixpoint factorial (n : nat) : nat :=
   match n with 0 => 1 | S n' => mult (S n') (factorial n') end.
 
@@ -22,7 +21,7 @@ Compute (factorial 7).    (* = 5040 *)
 Compute (factorial 20).   (* Error: Out of memory. *)
 ```
 
-`rocq/pow_oom.v` is the same with a plain recursive exponential:
+Same blow-up with a plain recursive exponential (`rocq/pow_oom.v`):
 
 ```coq
 Fixpoint pow (b e : nat) : nat :=
@@ -32,26 +31,22 @@ Compute (pow 2 10).   (* = 1024 *)
 Compute (pow 2 30).   (* Error: Out of memory. *)
 ```
 
-Run (capped, safe):
+Run (capped, safe): `harness/run_capped.sh 2000 20 factorial_oom rocq/factorial_oom.v`
 
-```bash
-harness/run_capped.sh 2000 20 factorial_oom rocq/factorial_oom.v
-```
+**Version of Rocq / Coq where this bug occurs**
 
-## Expected
+9.1.0 (OCaml 4.14.2, x86_64 Linux). Also observed via VsRocq 2.3.4.
 
-The computation either completes or fails quickly with a diagnostic. Small
-values (`factorial 7` = 5040, `pow 2 10` = 1024) are instant, so larger ones
-should be feasible in principle.
+**Interface of Rocq / Coq where this bug occurs**
 
-## Actual
+`rocq repl` (`Compute`) and VsRocq (`vsrocqtop`, 2.3.4 and current `main`).
 
-* `factorial 7` → `= 5040` (9 MB).
-* `factorial 8`..`10` → `Error: Stack overflow.`
-* `factorial 12`..`20` → `Error: Out of memory.`
-* `pow 2 30` (= 1073741824) → `Error: Out of memory.`
+**Last version of Rocq / Coq where the bug did not occur**
 
-## Evidence
+Not a regression: `Compute` has always materialised unary `nat`s; the issue is
+the lack of a diagnostic/bound. (Related closed reports: #10073, #17406.)
+
+**Evidence**
 
 `harness/sweep_factorial.sh` / `harness/sweep_pow.sh`, cap 2 GB / 25 s:
 
@@ -80,11 +75,14 @@ factorial 20              pow 2 30
 The same value in a binary type is instant (`rocq/binary_control.v`, `Z`):
 `= 2432902008176640000 : Z`.
 
-## Notes
+**Notes**
 
 This may be partly "working as intended" (unary `nat` is inherently `O(value)`),
 but the ratio of memory to result, the absence of any diagnostic, and the
-combination with an IDE server (see the VsRocq report) make it worth a look.
-Related: [#5661](https://github.com/rocq-prover/rocq/issues/5661).
+combination with an IDE server make it worth a look. Related:
+[#5661](https://github.com/rocq-prover/rocq/issues/5661).
 
-Attached repo reproduces this with `harness/`.
+---
+
+*Prepared with AI assistance (root-cause analysis, tests, measurements). The
+human author has reviewed and tested everything and takes responsibility for it.*
