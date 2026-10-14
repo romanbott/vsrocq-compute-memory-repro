@@ -1,7 +1,0 @@
-file=$HOME/proyectos/vsrocq/rocq/mult_stack_overflow.v
-server=vsrocqtop -Q $HOME/proyectos/vsrocq/rocq Repro
-timeout_s=8.0
-server_exit=-15
-peak_rss_kb=338676
-rss_csv=results/lsp_stackoverflow.rss.csv
-server_log=results/lsp_stackoverflow.server.log

@@ -1,0 +1,8 @@
+label=pow_oom
+file=rocq/pow_oom.v
+mem_cap_mb=2000
+timeout_s=20
+wall_ms=2849
+exit_code=0
+peak_rss_kb=1209548
+verdict=Error: Out of memory

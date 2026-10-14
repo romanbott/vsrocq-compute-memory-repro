@@ -1,0 +1,12 @@
+Welcome to Rocq 9.1.0
+Skipping rcfile loading.
+
+Rocq < Rocq < pow is defined
+pow is recursively defined (guarded on 2nd argument)
+
+Rocq < Toplevel input, characters 0-19:
+> Compute (pow 2 25).
+> ^^^^^^^^^^^^^^^^^^^
+Error: Out of memory.
+
+Rocq < 

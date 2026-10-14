@@ -9,7 +9,7 @@ This isolates the *server's* memory behaviour from the editor, so we can tell
 whether a runaway `Compute` is merely hosted by the server or amplified by it.
 
 usage:
-    drive_vsrocq.py --file rocq/unary_nat_oom.v --timeout 60 --out results
+    drive_vsrocq.py --file rocq/factorial_oom.v --timeout 60 --out results
 
 environment:
     VSROCQTOP   server binary (default: vsrocqtop)

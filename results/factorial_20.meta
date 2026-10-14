@@ -1,0 +1,8 @@
+label=factorial_20
+file=results/gen/factorial_20.v
+mem_cap_mb=2000
+timeout_s=25
+wall_ms=3263
+exit_code=0
+peak_rss_kb=1299496
+verdict=Error: Out of memory

@@ -1,0 +1,8 @@
+label=factorial_7
+file=results/gen/factorial_7.v
+mem_cap_mb=2000
+timeout_s=25
+wall_ms=183
+exit_code=0
+peak_rss_kb=9328
+verdict=

@@ -1,0 +1,10 @@
+Welcome to Rocq 9.1.0
+Skipping rcfile loading.
+
+Rocq < Rocq < pow is defined
+pow is recursively defined (guarded on 2nd argument)
+
+Rocq <      = 1024
+     : nat
+
+Rocq < 

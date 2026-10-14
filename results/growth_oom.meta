@@ -1,8 +1,0 @@
-label=growth_oom
-file=rocq/unary_nat_oom.v
-mem_cap_mb=8000
-timeout_s=6
-wall_ms=6207
-exit_code=143
-peak_rss_kb=2700720
-verdict=

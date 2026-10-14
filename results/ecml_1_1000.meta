@@ -1,8 +1,0 @@
-label=ecml_1_1000
-file=results/gen/ecml_1_1000.v
-mem_cap_mb=2000
-timeout_s=25
-wall_ms=502
-exit_code=0
-peak_rss_kb=247912
-verdict=Error: Stack overflow

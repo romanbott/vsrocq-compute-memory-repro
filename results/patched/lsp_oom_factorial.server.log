@@ -1,0 +1,2354 @@
+[top                 , 125996, 1791996918.638351] ------------------ begin ---------------
+[args                , 125996, 1791996918.638422] No project file found for $HOME/proyectos/vsrocq/repro
+[lspManager          , 125996, 1791996918.648779] UI req ready
+[top                 , 125996, 1791996918.648830] Main loop event ready: Request, 0 events waiting
+
+
+[top                 , 125996, 1791996918.648836] ==========================================================
+[top                 , 125996, 1791996918.648894] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system = { Sorted.sorted = false; data = [] };
+               queue = { Sorted.sorted = true; data = [] };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.648900] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.649002] received: {
+  "id": 1,
+  "params": {
+    "processId": 125994,
+    "rootUri": "file://$HOME/proyectos/vsrocq/repro/rocq",
+    "capabilities": {},
+    "initializationOptions": {
+      "proof": {
+        "delegation": "None",
+        "workers": null,
+        "mode": 0,
+        "block": true,
+        "pointInterpretationMode": 0
+      },
+      "goals": { "messages": { "full": true } },
+      "completion": {
+        "enable": false,
+        "algorithm": 0,
+        "unificationLimit": 100
+      },
+      "diagnostics": { "enable": true, "full": true },
+      "memory": { "limit": 1 },
+      "interrupt": { "preempt": false }
+    }
+  },
+  "method": "initialize",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996918.649010] ui request: initialize
+[lspManager          , 125996, 1791996918.649038] ---------------- initialized --------------
+[lspManager          , 125996, 1791996918.649118] sent: {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "capabilities": {
+      "completionProvider": { "resolveProvider": false },
+      "definitionProvider": true,
+      "documentHighlightProvider": true,
+      "documentSymbolProvider": { "workDoneProgress": true },
+      "foldingRangeProvider": true,
+      "hoverProvider": true,
+      "selectionRangeProvider": true,
+      "textDocumentSync": 2
+    },
+    "serverInfo": { "name": "vsrocq-language-server", "version": "2.5.0" }
+  }
+}
+[top                 , 125996, 1791996918.649132] ==========================================================
+[top                 , 125996, 1791996918.649283] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 2 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 2 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 })]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = 0; insertion = 4 };
+                         it = Send; cancelled = ref (false) },
+                       { Sorted.user = 0; insertion = 4 })]
+                     }
+                   }
+[top                 , 125996, 1791996918.649289] ==========================================================
+
+
+[top                 , 125996, 1791996918.649325] Main loop event ready: Send, 2 events waiting
+
+
+[top                 , 125996, 1791996918.649329] ==========================================================
+[top                 , 125996, 1791996918.649431] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 2 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 2 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.649435] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.649469] sent: {
+  "id": 4611686018427387903,
+  "params": { "items": [ { "section": "vsrocq" } ] },
+  "method": "workspace/configuration",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996918.649476] ==========================================================
+[top                 , 125996, 1791996918.649573] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 2 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 2 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 })]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.649579] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.649630] UI req ready
+[top                 , 125996, 1791996918.649644] Main loop event ready: Request, 1 events waiting
+
+
+[top                 , 125996, 1791996918.649649] ==========================================================
+[top                 , 125996, 1791996918.649713] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system = { Sorted.sorted = false; data = [] };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.649717] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.649738] received: { "params": {}, "method": "initialized", "jsonrpc": "2.0" }
+[top                 , 125996, 1791996918.649743] ==========================================================
+[top                 , 125996, 1791996918.649835] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 5 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 5 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 })]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.649839] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.649875] UI req ready
+[top                 , 125996, 1791996918.649898] Main loop event ready: Request, 1 events waiting
+
+
+[top                 , 125996, 1791996918.649902] ==========================================================
+[top                 , 125996, 1791996918.649977] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system = { Sorted.sorted = false; data = [] };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.649981] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.650061] received: {
+  "params": {
+    "settings": {
+      "proof": {
+        "delegation": "None",
+        "workers": null,
+        "mode": 0,
+        "block": true,
+        "pointInterpretationMode": 0
+      },
+      "goals": { "messages": { "full": true } },
+      "completion": {
+        "enable": false,
+        "algorithm": 0,
+        "unificationLimit": 100
+      },
+      "diagnostics": { "enable": true, "full": true },
+      "memory": { "limit": 1 },
+      "interrupt": { "preempt": false }
+    }
+  },
+  "method": "workspace/didChangeConfiguration",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996918.650069] Received notification: workspace/didChangeConfiguration
+[top                 , 125996, 1791996918.650078] ==========================================================
+[top                 , 125996, 1791996918.650191] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 6 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 6 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 })]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.650196] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.650233] UI req ready
+[top                 , 125996, 1791996918.650256] Main loop event ready: Request, 1 events waiting
+
+
+[top                 , 125996, 1791996918.650260] ==========================================================
+[top                 , 125996, 1791996918.650335] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system = { Sorted.sorted = false; data = [] };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.650340] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.650383] received: {
+  "params": {
+    "textDocument": {
+      "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+      "languageId": "rocq",
+      "version": 1,
+      "text": "(* Minimal reproducer: `Compute` on a standard recursive function whose result\n   is a large *unary* `nat`.  Memory grows without bound until the process is\n   killed.\n\n   `nat` is unary (`S (S (S ...))`), so materialising `factorial 20`\n   (= 2_432_902_008_176_640_000) builds ~2.4 quintillion constructors.\n\n   Observed with Rocq 9.1.0 (RSS capped at 2 GB):\n       factorial 7   ->  5040\n       factorial 20  ->  Error: Out of memory.   (still climbing)\n\n   Intermediate sizes (`factorial 8` .. `factorial 10`) overflow the VM's\n   read-back stack first; see harness/sweep_factorial.sh.\n*)\n\nFixpoint factorial (n : nat) : nat :=\n  match n with\n  | 0 => 1\n  | S n' => mult (S n') (factorial n')\n  end.\n\nCompute (factorial 7).    (* = 5040 *)\nCompute (factorial 20).   (* Error: Out of memory. *)\n"
+    }
+  },
+  "method": "textDocument/didOpen",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996918.650396] Received notification: textDocument/didOpen
+[args                , 125996, 1791996918.650438] No project file found for $HOME/proyectos/vsrocq/repro/rocq
+[proverThread        , 125996, 1791996918.650596] main: run
+[proverThread        , 125996, 1791996918.650723] runner: job begins: start_library
+[proverThread        , 125996, 1791996918.693929] runner: job ends: start_library
+[lspManager          , 125996, 1791996918.694175] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [],
+    "processedRange": []
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996918.694228] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996918.694239] ==========================================================
+[top                 , 125996, 1791996918.694395] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 7 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 7 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 });
+                       ({ Events.Event.WithAttributes.name =
+                          (Some "feedback");
+                          priority = { Sorted.user = -7; insertion = 9 };
+                          it = WaitQueueBatch1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 9 })
+                       ]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -5; insertion = 8 };
+                         it = ParseBegin; cancelled = ref (false) },
+                       { Sorted.user = -5; insertion = 8 })]
+                     }
+                   }
+[top                 , 125996, 1791996918.694403] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.694479] UI req ready
+[top                 , 125996, 1791996918.694512] Main loop event ready: Request, 3 events waiting
+
+
+[top                 , 125996, 1791996918.694516] ==========================================================
+[top                 , 125996, 1791996918.694635] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = None;
+                     priority = { Sorted.user = -5; insertion = 8 };
+                     it = ParseBegin; cancelled = ref (false) },
+                   { Sorted.user = -5; insertion = 8 })]
+                 };
+               system = { Sorted.sorted = false; data = [] };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.694639] ==========================================================
+
+
+[lspManager          , 125996, 1791996918.694713] received: {
+  "id": 4611686018427387903,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "proof": {
+        "delegation": "None",
+        "workers": null,
+        "mode": 0,
+        "block": true,
+        "pointInterpretationMode": 0
+      },
+      "goals": { "messages": { "full": true } },
+      "completion": {
+        "enable": false,
+        "algorithm": 0,
+        "unificationLimit": 100
+      },
+      "diagnostics": { "enable": true, "full": true },
+      "memory": { "limit": 1 },
+      "interrupt": { "preempt": false }
+    }
+  ]
+}
+[lspManager          , 125996, 1791996918.694719] ignoring unknown response to request 4611686018427387903
+[top                 , 125996, 1791996918.694723] ==========================================================
+[top                 , 125996, 1791996918.694873] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -5; insertion = 8 };
+                         it = ParseBegin; cancelled = ref (false) },
+                       { Sorted.user = -5; insertion = 8 })]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 10 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 10 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.694881] ==========================================================
+
+
+[top                 , 125996, 1791996918.694914] Main loop event ready: ParseBegin, 3 events waiting
+
+
+[top                 , 125996, 1791996918.694918] ==========================================================
+[top                 , 125996, 1791996918.695059] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 10 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 10 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.695065] ==========================================================
+
+
+[document            , 125996, 1791996918.695075] Parsing more from pos -1
+[proverThread        , 125996, 1791996918.695078] main: eventually_run
+[lspManager          , 125996, 1791996918.695130] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [],
+    "processedRange": []
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996918.695170] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996918.695176] ==========================================================
+[top                 , 125996, 1791996918.695318] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 10 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 10 });
+                       ({ Events.Event.WithAttributes.name = (Some "Parse");
+                          priority = { Sorted.user = -4; insertion = 11 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -4; insertion = 11 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.695324] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.695440] runner: job begins: create_parse_event
+[document            , 125996, 1791996918.695471] Start of parse is: 0
+[document            , 125996, 1791996918.696183] Parsed: Fixpoint factorial (n : nat) : nat :=
+  match n with
+  | 0 => 1
+  | S n' => mult (S n') (factorial n')
+  end.
+[proverThread        , 125996, 1791996918.696205] runner: job ends: create_parse_event
+[top                 , 125996, 1791996918.696412] Main loop event ready: DocumentEvent event: Parse _, 3 events waiting
+
+
+[top                 , 125996, 1791996918.696422] ==========================================================
+[top                 , 125996, 1791996918.696575] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 10 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 10 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.696580] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.696587] main: eventually_run
+[top                 , 125996, 1791996918.696604] ==========================================================
+[top                 , 125996, 1791996918.696768] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 10 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 10 });
+                       ({ Events.Event.WithAttributes.name = (Some "Parse");
+                          priority = { Sorted.user = -4; insertion = 12 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -4; insertion = 12 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.696774] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.696892] runner: job begins: create_parse_event
+[document            , 125996, 1791996918.696917] Start of parse is: 702
+[document            , 125996, 1791996918.697278] Parsed: Eval vm_compute in factorial 7.
+[proverThread        , 125996, 1791996918.697296] runner: job ends: create_parse_event
+[top                 , 125996, 1791996918.697444] Main loop event ready: DocumentEvent event: Parse _, 3 events waiting
+
+
+[top                 , 125996, 1791996918.697457] ==========================================================
+[top                 , 125996, 1791996918.697584] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 10 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 10 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.697589] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.697595] main: eventually_run
+[top                 , 125996, 1791996918.697611] ==========================================================
+[top                 , 125996, 1791996918.697761] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 10 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 10 });
+                       ({ Events.Event.WithAttributes.name = (Some "Parse");
+                          priority = { Sorted.user = -4; insertion = 13 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -4; insertion = 13 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.697766] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.697820] runner: job begins: create_parse_event
+[document            , 125996, 1791996918.697853] Start of parse is: 726
+[document            , 125996, 1791996918.698037] Parsed: Eval vm_compute in factorial 20.
+[proverThread        , 125996, 1791996918.698054] runner: job ends: create_parse_event
+[top                 , 125996, 1791996918.698090] Main loop event ready: DocumentEvent event: Parse _, 3 events waiting
+
+
+[top                 , 125996, 1791996918.698096] ==========================================================
+[top                 , 125996, 1791996918.698247] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 10 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 10 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.698254] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.698257] main: eventually_run
+[top                 , 125996, 1791996918.698271] ==========================================================
+[top                 , 125996, 1791996918.698438] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 10 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 10 });
+                       ({ Events.Event.WithAttributes.name = (Some "Parse");
+                          priority = { Sorted.user = -4; insertion = 14 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -4; insertion = 14 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.698442] ==========================================================
+
+
+[proverThread        , 125996, 1791996918.698583] runner: job begins: create_parse_event
+[document            , 125996, 1791996918.698611] Start of parse is: 766
+[proverThread        , 125996, 1791996918.698678] runner: job ends: create_parse_event
+[top                 , 125996, 1791996918.698710] Main loop event ready: DocumentEvent event: Parse _, 3 events waiting
+
+
+[top                 , 125996, 1791996918.698715] ==========================================================
+[top                 , 125996, 1791996918.698834] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 10 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 10 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.698842] ==========================================================
+
+
+[document            , 125996, 1791996918.698850] Parsing phase ended in 0.004
+[document            , 125996, 1791996918.698856] 3 new sentences
+[document            , 125996, 1791996918.698862] 2 new comments
+[document            , 125996, 1791996918.698869] Top edit: 0, Doc: , Doc by id: 
+[document            , 125996, 1791996918.698887] diff:
++ [Fixpoint--factorial--(--n--:--nat--)--:--nat--:=--match--n--with--|--0--=>--1--|--S--n'--=>--mult--(--S--n'--)--(--factorial--n'--)--end--.]
++ [Compute--(--factorial--7--)--.]
++ [Compute--(--factorial--20--)--.]
+[lspManager          , 125996, 1791996918.698928] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [],
+    "processedRange": []
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996918.698960] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996918.698965] ==========================================================
+[top                 , 125996, 1791996918.699107] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 10 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 10 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996918.699113] ==========================================================
+
+
+[lspManager          , 125996, 1791996920.649889] UI req ready
+[top                 , 125996, 1791996920.649938] Main loop event ready: Request, 2 events waiting
+
+
+[top                 , 125996, 1791996920.649943] ==========================================================
+[top                 , 125996, 1791996920.650056] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system = { Sorted.sorted = false; data = [] };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.650063] ==========================================================
+
+
+[lspManager          , 125996, 1791996920.650092] received: {
+  "params": {
+    "textDocument": {
+      "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+      "version": 1
+    }
+  },
+  "method": "prover/interpretToEnd",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.650105] Received notification: prover/interpretToEnd
+[top                 , 125996, 1791996920.650116] ==========================================================
+[top                 , 125996, 1791996920.650280] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -3; insertion = 16 };
+                         it = InteractionManagerEvent event: InterpretTo End;
+                         cancelled = ref (false) },
+                       { Sorted.user = -3; insertion = 16 })]
+                     }
+                   }
+[top                 , 125996, 1791996920.650286] ==========================================================
+
+
+[top                 , 125996, 1791996920.650337] Main loop event ready: InteractionManagerEvent event: InterpretTo End, 3 events waiting
+
+
+[top                 , 125996, 1791996920.650341] ==========================================================
+[top                 , 125996, 1791996920.650458] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.650469] ==========================================================
+
+
+[checkingManager     , 125996, 1791996920.650481] interpret_to_end id = 4
+[top                 , 125996, 1791996920.650487] ==========================================================
+[top                 , 125996, 1791996920.650637] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -2; insertion = 17 };
+                         it = InteractionManagerEvent event: Observe 4;
+                         cancelled = ref (false) },
+                       { Sorted.user = -2; insertion = 17 })]
+                     }
+                   }
+[top                 , 125996, 1791996920.650643] ==========================================================
+
+
+[top                 , 125996, 1791996920.650666] Main loop event ready: InteractionManagerEvent event: Observe 4, 3 events waiting
+
+
+[top                 , 125996, 1791996920.650670] ==========================================================
+[top                 , 125996, 1791996920.650809] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.650815] ==========================================================
+
+
+[executionManager    , 125996, 1791996920.650821] Non (locally) computed state 4
+[executionManager    , 125996, 1791996920.650826] Non (locally) computed state 3
+[executionManager    , 125996, 1791996920.650830] Non (locally) computed state 2
+[lspManager          , 125996, 1791996920.650903] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ],
+    "processingRange": [],
+    "processedRange": []
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.650946] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.650951] ==========================================================
+[top                 , 125996, 1791996920.651095] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -2; insertion = 18 };
+                         it =
+                         InteractionManagerEvent event: ExecuteToLoc 4 (started 0.000 ago);
+                         cancelled = ref (false) },
+                       { Sorted.user = -2; insertion = 18 })]
+                     }
+                   }
+[top                 , 125996, 1791996920.651102] ==========================================================
+
+
+[top                 , 125996, 1791996920.651132] Main loop event ready: InteractionManagerEvent event: ExecuteToLoc 4 (started 0.000 ago), 3 events waiting
+
+
+[top                 , 125996, 1791996920.651136] ==========================================================
+[top                 , 125996, 1791996920.651303] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.651312] ==========================================================
+
+
+[checkingManager     , 125996, 1791996920.651318] ExecuteToLoc 4 continues after 0.000
+[proverThread        , 125996, 1791996920.651323] main: eventually_run
+[lspManager          , 125996, 1791996920.651400] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ],
+    "processingRange": [],
+    "processedRange": []
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.651427] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.651434] ==========================================================
+[top                 , 125996, 1791996920.651575] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -100; insertion = 19 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -100; insertion = 19 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.651587] ==========================================================
+
+
+[proverThread        , 125996, 1791996920.651688] runner: job begins: promise_execution
+[proverThread        , 125996, 1791996920.652646] runner: job ends: promise_execution
+[top                 , 125996, 1791996920.652807] Main loop event ready: InteractionManagerEvent event: ExecutePromise 4, 3 events waiting
+
+
+[top                 , 125996, 1791996920.652818] ==========================================================
+[top                 , 125996, 1791996920.652954] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 9 };
+                     it = LocalFeedback; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 9 })]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.652962] ==========================================================
+
+
+[lspManager          , 125996, 1791996920.653080] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 22, "line": 21 }
+      }
+    ],
+    "processingRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 6, "line": 19 }
+      }
+    ],
+    "processedRange": [
+      {
+        "end": { "character": 6, "line": 19 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.653114] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.653121] ==========================================================
+[top                 , 125996, 1791996920.653289] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 9 };
+                         it = LocalFeedback; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 9 })]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 })]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -2; insertion = 20 };
+                         it =
+                         InteractionManagerEvent event: ExecuteToLoc 4 (started 0.002 ago);
+                         cancelled = ref (false) },
+                       { Sorted.user = -2; insertion = 20 })]
+                     }
+                   }
+[top                 , 125996, 1791996920.653296] ==========================================================
+
+
+[top                 , 125996, 1791996920.662096] Main loop event ready: LocalFeedback, 3 events waiting
+
+
+[top                 , 125996, 1791996920.662104] ==========================================================
+[top                 , 125996, 1791996920.662177] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = None;
+                     priority = { Sorted.user = -2; insertion = 20 };
+                     it =
+                     InteractionManagerEvent event: ExecuteToLoc 4 (started 0.011 ago);
+                     cancelled = ref (false) },
+                   { Sorted.user = -2; insertion = 20 })]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.662180] ==========================================================
+
+
+[lspManager          , 125996, 1791996920.662240] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 22, "line": 21 }
+      }
+    ],
+    "processingRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 6, "line": 19 }
+      }
+    ],
+    "processedRange": [
+      {
+        "end": { "character": 6, "line": 19 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.662259] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.662264] ==========================================================
+[top                 , 125996, 1791996920.662323] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -2; insertion = 20 };
+                         it =
+                         InteractionManagerEvent event: ExecuteToLoc 4 (started 0.011 ago);
+                         cancelled = ref (false) },
+                       { Sorted.user = -2; insertion = 20 })]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 });
+                       ({ Events.Event.WithAttributes.name =
+                          (Some "feedback");
+                          priority = { Sorted.user = -7; insertion = 21 };
+                          it = WaitQueueBatch1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 21 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.662326] ==========================================================
+
+
+[top                 , 125996, 1791996920.662346] Main loop event ready: InteractionManagerEvent event: ExecuteToLoc 4 (started 0.012 ago), 3 events waiting
+
+
+[top                 , 125996, 1791996920.662348] ==========================================================
+[top                 , 125996, 1791996920.662396] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 21 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 21 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.662398] ==========================================================
+
+
+[checkingManager     , 125996, 1791996920.662403] ExecuteToLoc 4 continues after 0.012
+[proverThread        , 125996, 1791996920.662405] main: eventually_run
+[lspManager          , 125996, 1791996920.662515] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 22, "line": 21 }
+      }
+    ],
+    "processingRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 6, "line": 19 }
+      }
+    ],
+    "processedRange": [
+      {
+        "end": { "character": 6, "line": 19 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.662538] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.662544] ==========================================================
+[top                 , 125996, 1791996920.662606] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -100; insertion = 22 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -100; insertion = 22 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 21 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 21 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.662609] ==========================================================
+
+
+[proverThread        , 125996, 1791996920.662621] runner: job begins: promise_execution
+[proverThread        , 125996, 1791996920.730287] runner: job ends: promise_execution
+[top                 , 125996, 1791996920.730386] Main loop event ready: InteractionManagerEvent event: ExecutePromise 4, 3 events waiting
+
+
+[top                 , 125996, 1791996920.730395] ==========================================================
+[top                 , 125996, 1791996920.730552] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 21 };
+                     it = LocalFeedback; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 21 })]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.730557] ==========================================================
+
+
+[lspManager          , 125996, 1791996920.730668] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 22, "line": 21 }
+      }
+    ],
+    "processedRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.730711] sent: {
+  "params": {
+    "diagnostics": [],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.730717] ==========================================================
+[top                 , 125996, 1791996920.730878] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 21 };
+                         it = LocalFeedback; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 21 })]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 })]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -2; insertion = 23 };
+                         it =
+                         InteractionManagerEvent event: ExecuteToLoc 4 (started 0.080 ago);
+                         cancelled = ref (false) },
+                       { Sorted.user = -2; insertion = 23 })]
+                     }
+                   }
+[top                 , 125996, 1791996920.730884] ==========================================================
+
+
+[top                 , 125996, 1791996920.730937] Main loop event ready: LocalFeedback, 3 events waiting
+
+
+[top                 , 125996, 1791996920.730943] ==========================================================
+[top                 , 125996, 1791996920.731075] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = None;
+                     priority = { Sorted.user = -2; insertion = 23 };
+                     it =
+                     InteractionManagerEvent event: ExecuteToLoc 4 (started 0.080 ago);
+                     cancelled = ref (false) },
+                   { Sorted.user = -2; insertion = 23 })]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "debug");
+                     priority = { Sorted.user = -7; insertion = 3 };
+                     it = WaitQueue1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 3 })]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.731080] ==========================================================
+
+
+[lspManager          , 125996, 1791996920.731177] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 22, "line": 21 }
+      }
+    ],
+    "processedRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.731249] sent: {
+  "params": {
+    "diagnostics": [
+      {
+        "message": "     = 5040\n     : nat",
+        "range": {
+          "end": { "character": 22, "line": 21 },
+          "start": { "character": 0, "line": 21 }
+        },
+        "severity": 3
+      }
+    ],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.731256] ==========================================================
+[top                 , 125996, 1791996920.731415] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -2; insertion = 23 };
+                         it =
+                         InteractionManagerEvent event: ExecuteToLoc 4 (started 0.080 ago);
+                         cancelled = ref (false) },
+                       { Sorted.user = -2; insertion = 23 })]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "debug");
+                         priority = { Sorted.user = -7; insertion = 3 };
+                         it = WaitQueue1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 3 });
+                       ({ Events.Event.WithAttributes.name =
+                          (Some "feedback");
+                          priority = { Sorted.user = -7; insertion = 24 };
+                          it = WaitQueueBatch1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 24 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.731419] ==========================================================
+
+
+[top                 , 125996, 1791996920.731445] Main loop event ready: InteractionManagerEvent event: ExecuteToLoc 4 (started 0.081 ago), 3 events waiting
+
+
+[top                 , 125996, 1791996920.731450] ==========================================================
+[top                 , 125996, 1791996920.731580] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 24 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 24 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.731584] ==========================================================
+
+
+[checkingManager     , 125996, 1791996920.731590] ExecuteToLoc 4 continues after 0.081
+[proverThread        , 125996, 1791996920.731595] main: eventually_run
+[lspManager          , 125996, 1791996920.731695] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [
+      {
+        "end": { "character": 23, "line": 22 },
+        "start": { "character": 22, "line": 21 }
+      }
+    ],
+    "processedRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996920.731773] sent: {
+  "params": {
+    "diagnostics": [
+      {
+        "message": "     = 5040\n     : nat",
+        "range": {
+          "end": { "character": 22, "line": 21 },
+          "start": { "character": 0, "line": 21 }
+        },
+        "severity": 3
+      }
+    ],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996920.731783] ==========================================================
+[top                 , 125996, 1791996920.731941] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -100; insertion = 25 };
+                          it = ReadInProgress; cancelled = ref (false) },
+                        { Sorted.user = -100; insertion = 25 })
+                       ]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 24 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 24 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996920.731946] ==========================================================
+
+
+[proverThread        , 125996, 1791996920.731961] runner: job begins: promise_execution
+[proverThread        , 125996, 1791996928.768209] runner: job ends: promise_execution
+[top                 , 125996, 1791996928.768289] Main loop event ready: InteractionManagerEvent event: ExecutePromise 4, 3 events waiting
+
+
+[top                 , 125996, 1791996928.768298] ==========================================================
+[top                 , 125996, 1791996928.768360] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 24 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 24 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.768363] ==========================================================
+
+
+[checkingManager     , 125996, 1791996928.768378] ExecuteToLoc 4 ends after 8.118
+[checkingManager     , 125996, 1791996928.768386] --------- Prepared ranges ---------
+[checkingManager     , 125996, 1791996928.768388] -------------------------------------
+[checkingManager     , 125996, 1791996928.768390] --------- Processing ranges ---------
+[checkingManager     , 125996, 1791996928.768392] -------------------------------------
+[checkingManager     , 125996, 1791996928.768394] --------- Processed ranges ---------
+[checkingManager     , 125996, 1791996928.768400] Range (start: (0,0), end: (21,22))
+[checkingManager     , 125996, 1791996928.768402] -------------------------------------
+[lspManager          , 125996, 1791996928.768444] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [],
+    "processedRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996928.768502] sent: {
+  "params": {
+    "diagnostics": [
+      {
+        "message": "Rocq exceeded the configured memory limit (vsrocq.memory.limit); the computation was aborted",
+        "range": {
+          "end": { "character": 23, "line": 22 },
+          "start": { "character": 0, "line": 22 }
+        },
+        "severity": 1
+      },
+      {
+        "message": "     = 5040\n     : nat",
+        "range": {
+          "end": { "character": 22, "line": 21 },
+          "start": { "character": 0, "line": 21 }
+        },
+        "severity": 3
+      }
+    ],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996928.768508] ==========================================================
+[top                 , 125996, 1791996928.768620] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 24 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 24 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -1; insertion = 29 };
+                         it = InteractionManagerEvent event: SendProofView 4;
+                         cancelled = ref (false) },
+                       { Sorted.user = -1; insertion = 29 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -8; insertion = 28 };
+                          it =
+                          InteractionManagerEvent event: SendBlockOnError Range (start: (21,22), end: (22,23));
+                          cancelled = ref (false) },
+                        { Sorted.user = -8; insertion = 28 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -8; insertion = 27 };
+                          it =
+                          InteractionManagerEvent event: SendBlockOnError 4;
+                          cancelled = ref (false) },
+                        { Sorted.user = -8; insertion = 27 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -1; insertion = 26 };
+                          it = InteractionManagerEvent event: SendProofView 4;
+                          cancelled = ref (false) },
+                        { Sorted.user = -1; insertion = 26 })
+                       ]
+                     }
+                   }
+[top                 , 125996, 1791996928.768633] ==========================================================
+
+
+[top                 , 125996, 1791996928.768686] Main loop event ready: InteractionManagerEvent event: SendBlockOnError 4, 6 events waiting
+
+
+[top                 , 125996, 1791996928.768689] ==========================================================
+[top                 , 125996, 1791996928.768767] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = None;
+                     priority = { Sorted.user = -8; insertion = 28 };
+                     it =
+                     InteractionManagerEvent event: SendBlockOnError Range (start: (21,22), end: (22,23));
+                     cancelled = ref (false) },
+                   { Sorted.user = -8; insertion = 28 });
+                   ({ Events.Event.WithAttributes.name = None;
+                      priority = { Sorted.user = -1; insertion = 26 };
+                      it = InteractionManagerEvent event: SendProofView 4;
+                      cancelled = ref (false) },
+                    { Sorted.user = -1; insertion = 26 });
+                   ({ Events.Event.WithAttributes.name = None;
+                      priority = { Sorted.user = -1; insertion = 29 };
+                      it = InteractionManagerEvent event: SendProofView 4;
+                      cancelled = ref (false) },
+                    { Sorted.user = -1; insertion = 29 })
+                   ]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 24 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 24 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.768771] ==========================================================
+
+
+[lspManager          , 125996, 1791996928.768793] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "range": {
+      "end": { "character": 23, "line": 22 },
+      "start": { "character": 0, "line": 22 }
+    }
+  },
+  "method": "prover/blockOnError",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996928.768798] ==========================================================
+[top                 , 125996, 1791996928.768872] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -8; insertion = 28 };
+                         it =
+                         InteractionManagerEvent event: SendBlockOnError Range (start: (21,22), end: (22,23));
+                         cancelled = ref (false) },
+                       { Sorted.user = -8; insertion = 28 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -1; insertion = 26 };
+                          it = InteractionManagerEvent event: SendProofView 4;
+                          cancelled = ref (false) },
+                        { Sorted.user = -1; insertion = 26 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -1; insertion = 29 };
+                          it = InteractionManagerEvent event: SendProofView 4;
+                          cancelled = ref (false) },
+                        { Sorted.user = -1; insertion = 29 })
+                       ]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 24 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 24 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.768876] ==========================================================
+
+
+[top                 , 125996, 1791996928.768897] Main loop event ready: InteractionManagerEvent event: SendBlockOnError Range (start: (21,22), end: (22,23)), 5 events waiting
+
+
+[top                 , 125996, 1791996928.768900] ==========================================================
+[top                 , 125996, 1791996928.768975] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = None;
+                     priority = { Sorted.user = -1; insertion = 26 };
+                     it = InteractionManagerEvent event: SendProofView 4;
+                     cancelled = ref (false) },
+                   { Sorted.user = -1; insertion = 26 });
+                   ({ Events.Event.WithAttributes.name = None;
+                      priority = { Sorted.user = -1; insertion = 29 };
+                      it = InteractionManagerEvent event: SendProofView 4;
+                      cancelled = ref (false) },
+                    { Sorted.user = -1; insertion = 29 })
+                   ]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 24 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 24 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.768978] ==========================================================
+
+
+[lspManager          , 125996, 1791996928.769001] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "range": {
+      "end": { "character": 23, "line": 22 },
+      "start": { "character": 22, "line": 21 }
+    }
+  },
+  "method": "prover/moveCursor",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996928.769006] ==========================================================
+[top                 , 125996, 1791996928.769080] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -1; insertion = 26 };
+                         it = InteractionManagerEvent event: SendProofView 4;
+                         cancelled = ref (false) },
+                       { Sorted.user = -1; insertion = 26 });
+                       ({ Events.Event.WithAttributes.name = None;
+                          priority = { Sorted.user = -1; insertion = 29 };
+                          it = InteractionManagerEvent event: SendProofView 4;
+                          cancelled = ref (false) },
+                        { Sorted.user = -1; insertion = 29 })
+                       ]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 24 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 24 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.769083] ==========================================================
+
+
+[top                 , 125996, 1791996928.769099] Main loop event ready: InteractionManagerEvent event: SendProofView 4, 4 events waiting
+
+
+[top                 , 125996, 1791996928.769101] ==========================================================
+[top                 , 125996, 1791996928.769174] Todo events: { Sel.Todo.ready =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = None;
+                     priority = { Sorted.user = -1; insertion = 29 };
+                     it = InteractionManagerEvent event: SendProofView 4;
+                     cancelled = ref (false) },
+                   { Sorted.user = -1; insertion = 29 })]
+                 };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 24 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 24 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.769177] ==========================================================
+
+
+[proverThread        , 125996, 1791996928.769181] main: run
+[proverThread        , 125996, 1791996928.769215] runner: job begins: SendProofView
+[utilities           , 125996, 1791996928.769241] State requested after error with no state
+[proverThread        , 125996, 1791996928.769253] runner: job ends: SendProofView
+[checkingManager     , 125996, 1791996928.779226] --------- Prepared ranges ---------
+[checkingManager     , 125996, 1791996928.779238] -------------------------------------
+[checkingManager     , 125996, 1791996928.779241] --------- Processing ranges ---------
+[checkingManager     , 125996, 1791996928.779244] -------------------------------------
+[checkingManager     , 125996, 1791996928.779246] --------- Processed ranges ---------
+[checkingManager     , 125996, 1791996928.779251] Range (start: (0,0), end: (21,22))
+[checkingManager     , 125996, 1791996928.779253] -------------------------------------
+[lspManager          , 125996, 1791996928.779290] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [],
+    "processedRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996928.779347] sent: {
+  "params": {
+    "diagnostics": [
+      {
+        "message": "Rocq exceeded the configured memory limit (vsrocq.memory.limit); the computation was aborted",
+        "range": {
+          "end": { "character": 23, "line": 22 },
+          "start": { "character": 0, "line": 22 }
+        },
+        "severity": 1
+      },
+      {
+        "message": "     = 5040\n     : nat",
+        "range": {
+          "end": { "character": 22, "line": 21 },
+          "start": { "character": 0, "line": 21 }
+        },
+        "severity": 3
+      }
+    ],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996928.779379] sent: {
+  "params": {
+    "range": {
+      "end": { "character": 23, "line": 22 },
+      "start": { "character": 0, "line": 22 }
+    },
+    "proof": null,
+    "messages": [
+      [
+        1,
+        [
+          "Ppcmd_string",
+          "Rocq exceeded the configured memory limit (vsrocq.memory.limit); the computation was aborted"
+        ]
+      ]
+    ],
+    "pp_proof": null,
+    "pp_messages": []
+  },
+  "method": "prover/proofView",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996928.779383] ==========================================================
+[top                 , 125996, 1791996928.779466] New Todo events: { Sel.Todo.ready =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = None;
+                         priority = { Sorted.user = -1; insertion = 29 };
+                         it = InteractionManagerEvent event: SendProofView 4;
+                         cancelled = ref (false) },
+                       { Sorted.user = -1; insertion = 29 })]
+                     };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 24 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 24 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.779469] ==========================================================
+
+
+[top                 , 125996, 1791996928.779509] Main loop event ready: InteractionManagerEvent event: SendProofView 4, 3 events waiting
+
+
+[top                 , 125996, 1791996928.779512] ==========================================================
+[top                 , 125996, 1791996928.779558] Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+               system =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "lsp");
+                     priority = { Sorted.user = -6; insertion = 15 };
+                     it = ReadInProgress; cancelled = ref (false) },
+                   { Sorted.user = -6; insertion = 15 })]
+                 };
+               queue =
+               { Sorted.sorted = false;
+                 data =
+                 [({ Events.Event.WithAttributes.name = (Some "feedback");
+                     priority = { Sorted.user = -7; insertion = 24 };
+                     it = WaitQueueBatch1; cancelled = ref (false) },
+                   { Sorted.user = -7; insertion = 24 });
+                   ({ Events.Event.WithAttributes.name = (Some "debug");
+                      priority = { Sorted.user = -7; insertion = 3 };
+                      it = WaitQueue1; cancelled = ref (false) },
+                    { Sorted.user = -7; insertion = 3 })
+                   ]
+                 };
+               tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.779561] ==========================================================
+
+
+[proverThread        , 125996, 1791996928.779565] main: run
+[proverThread        , 125996, 1791996928.779674] runner: job begins: SendProofView
+[utilities           , 125996, 1791996928.779692] State requested after error with no state
+[proverThread        , 125996, 1791996928.779702] runner: job ends: SendProofView
+[checkingManager     , 125996, 1791996928.789609] --------- Prepared ranges ---------
+[checkingManager     , 125996, 1791996928.789622] -------------------------------------
+[checkingManager     , 125996, 1791996928.789625] --------- Processing ranges ---------
+[checkingManager     , 125996, 1791996928.789629] -------------------------------------
+[checkingManager     , 125996, 1791996928.789631] --------- Processed ranges ---------
+[checkingManager     , 125996, 1791996928.789637] Range (start: (0,0), end: (21,22))
+[checkingManager     , 125996, 1791996928.789639] -------------------------------------
+[lspManager          , 125996, 1791996928.789673] sent: {
+  "params": {
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v",
+    "preparedRange": [],
+    "processingRange": [],
+    "processedRange": [
+      {
+        "end": { "character": 22, "line": 21 },
+        "start": { "character": 0, "line": 0 }
+      }
+    ]
+  },
+  "method": "prover/updateHighlights",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996928.789727] sent: {
+  "params": {
+    "diagnostics": [
+      {
+        "message": "Rocq exceeded the configured memory limit (vsrocq.memory.limit); the computation was aborted",
+        "range": {
+          "end": { "character": 23, "line": 22 },
+          "start": { "character": 0, "line": 22 }
+        },
+        "severity": 1
+      },
+      {
+        "message": "     = 5040\n     : nat",
+        "range": {
+          "end": { "character": 22, "line": 21 },
+          "start": { "character": 0, "line": 21 }
+        },
+        "severity": 3
+      }
+    ],
+    "uri": "file://$HOME/proyectos/vsrocq/repro/rocq/factorial_oom.v"
+  },
+  "method": "textDocument/publishDiagnostics",
+  "jsonrpc": "2.0"
+}
+[lspManager          , 125996, 1791996928.789763] sent: {
+  "params": {
+    "range": {
+      "end": { "character": 23, "line": 22 },
+      "start": { "character": 0, "line": 22 }
+    },
+    "proof": null,
+    "messages": [
+      [
+        1,
+        [
+          "Ppcmd_string",
+          "Rocq exceeded the configured memory limit (vsrocq.memory.limit); the computation was aborted"
+        ]
+      ]
+    ],
+    "pp_proof": null,
+    "pp_messages": []
+  },
+  "method": "prover/proofView",
+  "jsonrpc": "2.0"
+}
+[top                 , 125996, 1791996928.789767] ==========================================================
+[top                 , 125996, 1791996928.789821] New Todo events: { Sel.Todo.ready = { Sorted.sorted = false; data = [] };
+                   system =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "lsp");
+                         priority = { Sorted.user = -6; insertion = 15 };
+                         it = ReadInProgress; cancelled = ref (false) },
+                       { Sorted.user = -6; insertion = 15 })]
+                     };
+                   queue =
+                   { Sorted.sorted = false;
+                     data =
+                     [({ Events.Event.WithAttributes.name = (Some "feedback");
+                         priority = { Sorted.user = -7; insertion = 24 };
+                         it = WaitQueueBatch1; cancelled = ref (false) },
+                       { Sorted.user = -7; insertion = 24 });
+                       ({ Events.Event.WithAttributes.name = (Some "debug");
+                          priority = { Sorted.user = -7; insertion = 3 };
+                          it = WaitQueue1; cancelled = ref (false) },
+                        { Sorted.user = -7; insertion = 3 })
+                       ]
+                     };
+                   tasks = { Sorted.sorted = true; data = [] } }
+[top                 , 125996, 1791996928.789824] ==========================================================
+
+

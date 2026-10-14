@@ -1,75 +1,84 @@
-# Rocq: `Compute` of a modest recursive expression with a large unary `nat` result consumes unbounded memory
+# Rocq: `Compute` of a standard recursive function with a large unary `nat` result consumes unbounded memory
 
-**Component:** Rocq kernel / reduction (`Compute` = `cbv`)
+**Component:** Rocq kernel / reduction (`Compute` = `Eval vm_compute`)
 **Version:** Rocq 9.1.0, OCaml 4.14.2, x86_64 Linux
 
 ## Summary
 
-A short, ordinary-looking `Compute` allocates without bound because its result
-is a large unary `nat`. Under a 2 GB cap it dies within seconds; uncapped it
-grows into the tens of GB and can take the machine down (especially through an
-IDE's language server).
+A short, ordinary `Compute` allocates without bound because its result is a
+large unary `nat`. Under a 2 GB cap it dies within seconds; uncapped it grows
+into the tens of GB and can take the machine down (especially through an IDE's
+language server).
 
 ## Reproducer
 
-`rocq/unary_nat_oom.v`:
+`rocq/factorial_oom.v`:
 
 ```coq
-From Stdlib Require Import List.
-Import ListNotations.
+Fixpoint factorial (n : nat) : nat :=
+  match n with 0 => 1 | S n' => mult (S n') (factorial n') end.
 
-Fixpoint fold {X Y : Type} (f : X -> Y -> Y) (l : list X) (b : Y) : Y :=
-  match l with nil => b | h :: t => f h (fold f t b) end.
+Compute (factorial 7).    (* = 5040 *)
+Compute (factorial 20).   (* Error: Out of memory. *)
+```
 
-Definition ecml (l : list nat) : nat :=
-  fold mult (map (fun x : nat => mult x x) l) 1.
+`rocq/pow_oom.v` is the same with a plain recursive exponential:
 
-Compute (ecml [1;2;3]).         (* = 36 *)
-Compute (ecml [1;20;300;4;5]).  (* = 14400000000, out of memory *)
+```coq
+Fixpoint pow (b e : nat) : nat :=
+  match e with 0 => 1 | S e' => mult b (pow b e') end.
+
+Compute (pow 2 10).   (* = 1024 *)
+Compute (pow 2 30).   (* Error: Out of memory. *)
 ```
 
 Run (capped, safe):
 
 ```bash
-harness/run_capped.sh 2000 20 unary_nat_oom rocq/unary_nat_oom.v
+harness/run_capped.sh 2000 20 factorial_oom rocq/factorial_oom.v
 ```
 
 ## Expected
 
-The computation either completes or fails quickly with a diagnostic. `36` is
-computed instantly, so `14_400_000_000` should be feasible in principle.
+The computation either completes or fails quickly with a diagnostic. Small
+values (`factorial 7` = 5040, `pow 2 10` = 1024) are instant, so larger ones
+should be feasible in principle.
 
 ## Actual
 
-* `ecml [1;2;3]` → `= 36` (8 MB).
-* `ecml [1;20;30]` (= 360000) → `Error: Stack overflow.`
-* `ecml [1;20;300;4;5]` (= 14400000000) → `Error: Out of memory.`
+* `factorial 7` → `= 5040` (9 MB).
+* `factorial 8`..`10` → `Error: Stack overflow.`
+* `factorial 12`..`20` → `Error: Out of memory.`
+* `pow 2 30` (= 1073741824) → `Error: Out of memory.`
 
 ## Evidence
 
-`harness/sweep_ecml.sh` (using `ecml [1;N] = N²`), cap 2 GB / 25 s:
+`harness/sweep_factorial.sh` / `harness/sweep_pow.sh`, cap 2 GB / 25 s:
 
-| input | expected | result | wall | peak RSS |
-|---|---|---|---|---|
-| `[1;3]` | 9 | `= 9` | 214 ms | 8 MB |
-| `[1;100]` | 10000 | `= 10000` | 400 ms | 167 MB |
-| `[1;1000]` | 1 000 000 | `Error: Stack overflow.` | 502 ms | 248 MB |
-| `[1;3000]` | 9 000 000 | `Error: Stack overflow.` | 2.8 s | 947 MB |
-| `[1;10000]` | 100 000 000 | killed (SIGABRT, hit cap) | 13.7 s | 1.7 GB |
-| `[1;100000]` | 10 000 000 000 | killed (SIGABRT, hit cap) | 13.7 s | 1.7 GB |
+| `Compute` | result | wall | peak RSS |
+|---|---|---|---|
+| `factorial 7` | `= 5040` | 183 ms | 9 MB |
+| `factorial 8` | `Error: Stack overflow.` | 148 ms | 8 MB |
+| `factorial 10` | `Error: Stack overflow.` | 350 ms | 117 MB |
+| `factorial 12` | `Error: Out of memory.` | 3.3 s | 1.2 GB |
+| `factorial 20` | `Error: Out of memory.` | 3.3 s | 1.3 GB |
+| `pow 2 10` | `= 1024` | 114 ms | 8 MB |
+| `pow 2 20` | `Error: Stack overflow.` | 255 ms | 166 MB |
+| `pow 2 25` | `Error: Out of memory.` | 2.8 s | 1.1 GB |
+| `pow 2 30` | `Error: Out of memory.` | 2.8 s | 1.1 GB |
 
 Fixed 6 s window, 8 GB ceiling (killed by time, still climbing):
 
 ```
-0.64 s   300 MB
-1.90 s   805 MB
-3.16 s  1769 MB
-4.42 s  1829 MB
-5.68 s  2556 MB
+factorial 20              pow 2 30
+2.11 s   840 MB           2.11 s   891 MB
+3.16 s  1420 MB           3.16 s  1278 MB
+4.22 s  1894 MB           4.21 s  1721 MB
+5.27 s  2287 MB           5.26 s  1873 MB
 ```
 
-The same value in a binary type is instant
-(`rocq/binary_control.v`, `Z`): `= 14400000000 : Z`.
+The same value in a binary type is instant (`rocq/binary_control.v`, `Z`):
+`= 2432902008176640000 : Z`.
 
 ## Notes
 

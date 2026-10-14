@@ -1,8 +1,0 @@
-label=ecml_1_3
-file=results/gen/ecml_1_3.v
-mem_cap_mb=2000
-timeout_s=25
-wall_ms=214
-exit_code=0
-peak_rss_kb=8072
-verdict=

@@ -1,0 +1,12 @@
+Welcome to Rocq 9.1.0
+Skipping rcfile loading.
+
+Rocq < Rocq < factorial is defined
+factorial is recursively defined (guarded on 1st argument)
+
+Rocq < Toplevel input, characters 0-23:
+> Compute (factorial 10).
+> ^^^^^^^^^^^^^^^^^^^^^^^
+Error: Stack overflow.
+
+Rocq < 

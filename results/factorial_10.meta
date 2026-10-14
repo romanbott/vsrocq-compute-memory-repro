@@ -1,0 +1,8 @@
+label=factorial_10
+file=results/gen/factorial_10.v
+mem_cap_mb=2000
+timeout_s=25
+wall_ms=350
+exit_code=0
+peak_rss_kb=119928
+verdict=Error: Stack overflow

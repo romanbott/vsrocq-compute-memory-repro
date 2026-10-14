@@ -1,0 +1,10 @@
+Welcome to Rocq 9.1.0
+Skipping rcfile loading.
+
+Rocq < Rocq < factorial is defined
+factorial is recursively defined (guarded on 1st argument)
+
+Rocq <      = 5040
+     : nat
+
+Rocq < 

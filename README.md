@@ -4,17 +4,9 @@ Two minimal, self-contained reproductions of Rocq `Compute` blowing up when the
 result is a large **unary `nat`**, and of the VsRocq language server
 (`vsrocqtop`) hosting that blow-up until the host runs out of memory.
 
-The original trigger was an innocuous-looking line in a Software Foundations
-exercise file:
-
-```coq
-Compute mult 200 200.                              (* line 134 *)
-Compute eleva_cuadrado_y_multiplica_lista [1;20;300;4;5].   (* line 119 *)
-```
-
-* `Compute mult 200 200.`  → **`Error: Stack overflow.`**
-* `Compute eleva_cuadrado_y_multiplica_lista [1;20;300;4;5].` → **out of memory**
-  (the value is `14_400_000_000`, represented as a unary `nat`).
+The trigger is always the same: `Compute` (= `Eval vm_compute`) of an ordinary
+recursive function whose result is a large `nat`. The two standard examples used
+here are `factorial 20` and `pow 2 30`.
 
 Everything below is reduced to minimal, name-free reproducers.
 
@@ -36,8 +28,8 @@ run on a normal machine. From the repository root:
 ./run_all.sh            # everything, capped
 # or individually:
 harness/run_capped.sh 2000 20 mult_stack_overflow rocq/mult_stack_overflow.v
-harness/run_capped.sh 2000 20 unary_nat_oom       rocq/unary_nat_oom.v
-lsp/run_lsp_capped.sh 8000 10 rocq/unary_nat_oom.v oomgrow
+harness/run_capped.sh 2000 20 factorial_oom       rocq/factorial_oom.v
+lsp/run_lsp_capped.sh 8000 10 rocq/factorial_oom.v oomgrow
 ```
 
 ## Failure mode A — `Compute (mult 200 200)` overflows the stack
@@ -73,48 +65,71 @@ all print `= 40000` for the same term — only `vm_compute` (and
 
 ## Failure mode B — large unary `nat` results exhaust memory
 
-`rocq/unary_nat_oom.v`:
+`rocq/factorial_oom.v`:
 
 ```coq
-Definition ecml (l : list nat) : nat :=
-  fold mult (map (fun x : nat => mult x x) l) 1.
+Fixpoint factorial (n : nat) : nat :=
+  match n with 0 => 1 | S n' => mult (S n') (factorial n') end.
 
-Compute (ecml [1;2;3]).         (* = 36            *)
-Compute (ecml [1;20;300;4;5]).  (* = 14400000000, out of memory *)
+Compute (factorial 7).    (* = 5040 *)
+Compute (factorial 20).   (* Error: Out of memory. *)
 ```
 
-`ecml [1;20;300;4;5]` is `1²·20²·300²·4²·5² = 14_400_000_000`. Because `nat` is
-unary, materialising that value builds ~14.4 billion `S` constructors, and the
-reduction allocates far more than the final value itself.
+`factorial 20` = 2_432_902_008_176_640_000. Because `nat` is unary, materialising
+that value builds ~2.4 quintillion `S` constructors, and the reduction allocates
+far more than the final value itself.
 
-`harness/sweep_ecml.sh` (using `ecml [1;N] = N²`), capped at 2 GB / 25 s:
+`rocq/pow_oom.v` is the same story with a plain recursive exponential
+(`pow 2 30` = 1_073_741_824):
 
-| input | expected | result | wall | peak RSS |
-|---|---|---|---|---|
-| `[1;3]` | 9 | `= 9` | 214 ms | 8 MB |
-| `[1;100]` | 10000 | `= 10000` | 400 ms | 167 MB |
-| `[1;1000]` | 1 000 000 | `Error: Stack overflow.` | 502 ms | 248 MB |
-| `[1;3000]` | 9 000 000 | `Error: Stack overflow.` | 2.8 s | 947 MB |
-| `[1;10000]` | 100 000 000 | killed (SIGABRT, hit cap) | 13.7 s | 1.7 GB |
-| `[1;100000]` | 10 000 000 000 | killed (SIGABRT, hit cap) | 13.7 s | 1.7 GB |
+```coq
+Fixpoint pow (b e : nat) : nat :=
+  match e with 0 => 1 | S e' => mult b (pow b e') end.
 
-With the cap lifted, memory grows without bound. A fixed 6 s observation window
-(`harness/run_capped.sh 8000 6 growth_oom rocq/unary_nat_oom.v`) gives a clean,
-monotonic curve — ~2.7 GB and still climbing when the watchdog stops it:
+Compute (pow 2 10).   (* = 1024 *)
+Compute (pow 2 30).   (* Error: Out of memory. *)
+```
+
+`harness/sweep_factorial.sh`, capped at 2 GB / 25 s:
+
+| `Compute (factorial n)` | result | wall | peak RSS |
+|---|---|---|---|
+| `factorial 5` | `= 120` | 105 ms | 8 MB |
+| `factorial 7` | `= 5040` | 183 ms | 9 MB |
+| `factorial 8` | `Error: Stack overflow.` | 148 ms | 8 MB |
+| `factorial 10` | `Error: Stack overflow.` | 350 ms | 117 MB |
+| `factorial 12` | `Error: Out of memory.` | 3.3 s | 1.2 GB |
+| `factorial 20` | `Error: Out of memory.` | 3.3 s | 1.3 GB |
+
+`harness/sweep_pow.sh`, same caps:
+
+| `Compute (pow 2 k)` | result | wall | peak RSS |
+|---|---|---|---|
+| `pow 2 10` | `= 1024` | 114 ms | 8 MB |
+| `pow 2 15` | `Error: Stack overflow.` | 151 ms | 8 MB |
+| `pow 2 20` | `Error: Stack overflow.` | 255 ms | 166 MB |
+| `pow 2 22` | `Error: Stack overflow.` | 629 ms | 215 MB |
+| `pow 2 25` | `Error: Out of memory.` | 2.8 s | 1.1 GB |
+| `pow 2 30` | `Error: Out of memory.` | 2.8 s | 1.1 GB |
+
+With the cap lifted, memory grows without bound. Fixed 6 s observation windows
+(`harness/run_capped.sh 8000 6 growth_factorial rocq/factorial_oom.v`, and
+likewise `growth_pow`) give clean, monotonic curves — ~2.9 GB and ~1.9 GB, still
+climbing when the watchdog stops them:
 
 ```
-0.64 s   300 MB
-1.90 s   805 MB
-3.16 s  1769 MB
-4.42 s  1829 MB
-5.68 s  2556 MB
+growth_factorial         growth_pow
+2.11 s   840 MB          2.11 s   891 MB
+3.16 s  1420 MB          3.16 s  1278 MB
+4.22 s  1894 MB          4.21 s  1721 MB
+5.27 s  2287 MB          5.26 s  1873 MB
 ```
 
 A control in a binary representation (`rocq/binary_control.v`) is instant:
 
 ```coq
 From Stdlib Require Import ZArith. Open Scope Z_scope.
-Compute (1 * 1 * (20 * 20) * (300 * 300) * (4 * 4) * (5 * 5)).  (* = 14400000000 : Z *)
+Compute (1 * 2 * 3 * ... * 20).  (* = 2432902008176640000 : Z *)
 ```
 
 ## Language-server reproduction (headless `vsrocqtop`)
@@ -126,17 +141,18 @@ editor.
 
 | file | server peak RSS (cap 8 GB) |
 |---|---|
-| `rocq/binary_control.v` | 0.27 GB |
-| `rocq/mult_stack_overflow.v` | 0.32 GB (reports the error quickly) |
-| `rocq/unary_nat_oom.v` | **3.55 GB at 10 s, still climbing** |
+| `rocq/binary_control.v` | 0.28 GB |
+| `rocq/mult_stack_overflow.v` | 0.31 GB (reports the error quickly) |
+| `rocq/factorial_oom.v` | **3.65 GB at ~13 s, still climbing** |
 
-Growth curve for `unary_nat_oom.v` through the server:
+Growth curve for `factorial_oom.v` through the server (unpatched 2.3.4):
 
 ```
-7.4 s    945 MB
-9.5 s   1862 MB
-12.7 s  3103 MB
-14.8 s  3631 MB
+6.8 s   2.77 GB
+8.5 s   2.96 GB
+10.2 s  3.22 GB
+11.9 s  3.40 GB
+13.6 s  3.52 GB
 ```
 
 So a single `Compute` in a document makes `vsrocqtop` allocate until the machine
@@ -154,12 +170,13 @@ afterwards. It also fixes an unrelated crash: `executionManager.ml` used to do
 `Aborted e -> CErrors.user_err e`, which raised inside the event loop and killed
 the server.
 
-Validated against the patched server (`vsrocq.memory.limit = 1` GB, same repro):
+Validated against the patched server (`vsrocq.memory.limit = 1` GB,
+`rocq/factorial_oom.v`):
 
-| | unpatched | patched |
+| | unpatched (2.3.4) | patched (main) |
 |---|---|---|
 | behaviour | grows without bound | aborts at the limit |
-| peak RSS | 6.4 GB+ (10 s), still climbing | 3.2 GB peak, settles to 2.2 GB |
+| peak RSS | 3.65 GB at 13 s, still climbing | 3.23 GB peak, settles to 2.18 GB |
 | server | OOMs the host / is killed | survives and reports an error |
 | diagnostic | — | `Rocq exceeded the configured memory limit ...` |
 

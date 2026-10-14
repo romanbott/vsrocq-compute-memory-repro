@@ -1,0 +1,7 @@
+file=$HOME/proyectos/vsrocq/repro/rocq/binary_control.v
+server=$HOME/.opam/4.14.2/bin/vsrocqtop -Q $HOME/proyectos/vsrocq/repro/rocq Repro
+timeout_s=8.0
+server_exit=-15
+peak_rss_kb=295952
+rss_csv=results/lsp_unpatched/lsp_unpatched_control.rss.csv
+server_log=results/lsp_unpatched/lsp_unpatched_control.server.log

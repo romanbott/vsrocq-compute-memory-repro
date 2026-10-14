@@ -1,0 +1,8 @@
+label=pow_2_15
+file=results/gen/pow_2_15.v
+mem_cap_mb=2000
+timeout_s=25
+wall_ms=151
+exit_code=0
+peak_rss_kb=8044
+verdict=Error: Stack overflow

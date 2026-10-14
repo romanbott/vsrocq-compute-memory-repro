@@ -1,0 +1,8 @@
+k,expected,result,wall_ms,peak_rss_kb,exit_code
+10,1024,= 1024,114,8100,0
+15,32768,Error: Stack overflow,151,8044,0
+18,262144,Error: Stack overflow,175,8044,0
+20,1048576,Error: Stack overflow,255,170120,0
+22,4194304,Error: Stack overflow,629,220168,0
+25,33554432,Error: Out of memory,2810,1128812,0
+30,1073741824,Error: Out of memory,2772,1128860,0

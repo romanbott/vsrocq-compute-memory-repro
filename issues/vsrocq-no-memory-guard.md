@@ -15,32 +15,33 @@ only**, never for a memory bound.
 ## Reproducer
 
 A short recursive computation whose result is a large unary `nat` (see the Rocq
-report). `rocq/unary_nat_oom.v`:
+report). `rocq/factorial_oom.v`:
 
 ```coq
-Compute (ecml [1;20;300;4;5]).  (* result is 14400000000, unary *)
+Fixpoint factorial (n : nat) : nat :=
+  match n with 0 => 1 | S n' => mult (S n') (factorial n') end.
+Compute (factorial 20).   (* result is 2432902008176640000, unary *)
 ```
 
 Driven headlessly against the server (opens the file, sends
 `prover/interpretToEnd`, samples the server's RSS):
 
 ```bash
-lsp/run_lsp_capped.sh 8000 10 rocq/unary_nat_oom.v oomgrow
+lsp/run_lsp_capped.sh 8000 10 rocq/factorial_oom.v oomgrow
 ```
 
 ## Actual
 
-Server peak RSS (8 GB address-space ceiling, 10 s window):
+Server peak RSS (8 GB address-space ceiling, ~13 s window, unpatched 2.3.4):
 
 | file | peak RSS |
 |---|---|
-| `rocq/binary_control.v` (control) | 0.27 GB |
-| `rocq/mult_stack_overflow.v` | 0.32 GB (errors quickly) |
-| `rocq/unary_nat_oom.v` | **3.55 GB, still climbing** |
+| `rocq/binary_control.v` (control) | 0.28 GB |
+| `rocq/mult_stack_overflow.v` | 0.31 GB (errors quickly) |
+| `rocq/factorial_oom.v` | **3.65 GB, still climbing** |
 
-With a longer window it passes 6 GB and keeps going; setting
-`memory.limit` to 2 GB does not change the curve. Uncapped it reaches the tens
-of GB.
+With a longer window it keeps going; setting `memory.limit` to 2 GB does not
+change the curve. Uncapped it reaches the tens of GB.
 
 ## Root cause (current `main`)
 
