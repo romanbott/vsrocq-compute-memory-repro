@@ -43,12 +43,15 @@ With `vsrocq.memory.limit = 1` GB and `rocq/factorial_oom.v`:
 | server | OOMs the host / is killed | survives and reports an error |
 | diagnostic | — | `Rocq exceeded the configured memory limit ...` |
 
-Local checks: `make fatalwarnings`, `make test`, `client && npm run package`.
-Note: with Rocq **9.1.0** one pre-existing test
-(`parse.feedback_attached_before_execution`) fails because 9.1.0 emits
-`notation-bound-to-variable` instead of the expected
-`level-0-notation-not-closed`; that warning exists in 9.2/9.3/dev, which is
-what CI runs `make test` against. All other tests pass, including the new one.
+Local checks:
+- Rocq **9.3.0** (OCaml 4.14.2): `make fatalwarnings` and `make test` are fully
+  green (27/27, including the new test).
+- Rocq **9.1.0**: `make fatalwarnings` green; `make test` is 26/27 — the only
+  failure is the pre-existing `parse.feedback_attached_before_execution`, because
+  9.1.0 emits `notation-bound-to-variable` instead of the expected
+  `level-0-notation-not-closed` (that warning exists in 9.2/9.3/dev, which is
+  what CI runs `make test` against).
+- `client && npm run package` green.
 
 ## Caveat
 
